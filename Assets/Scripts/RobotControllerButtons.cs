@@ -39,7 +39,6 @@ public class RobotControllerButtons : MonoBehaviour
 
         Debug.Log("Conexión ROS inicializada y publicador registrado.");
 
-        // Asignar el Rigidbody
         rb = GetComponent<Rigidbody>();
         if (rb == null)
         {
@@ -188,24 +187,18 @@ public class RobotControllerButtons : MonoBehaviour
             Debug.Log("Script Floater desactivado.");
         }
 
-        
-        // Desactiva las físicas temporalmente
         rb.isKinematic = true;
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        rb.Sleep(); // Garantiza que no haya fuerzas residuales
+        rb.Sleep();
         Debug.Log("Física detenida.");
         
-
-        // Guardar la rotación actual del eje Y
         float currentYRotation = transform.rotation.eulerAngles.y;
 
-        // Restablece la posición y mantiene la rotación actual del eje Y
         Vector3 currentPosition = transform.position;
         transform.position = new Vector3(currentPosition.x, -0.421f, currentPosition.z);
         transform.rotation = Quaternion.Euler(0, currentYRotation, 0);
 
-        // Restablece las velocidades y estados internos
         targetMoveSpeed = 0f;
         currentMoveSpeed = 0f;
         targetRotationSpeed = 0f;
@@ -215,18 +208,15 @@ public class RobotControllerButtons : MonoBehaviour
 
         if (rb != null)
         {
-            // Reactiva las físicas
             rb.isKinematic = false;
-            rb.WakeUp(); // Garantiza que el Rigidbody vuelva a estar activo sin inercia
+            rb.WakeUp();
             Debug.Log("Física reactivada.");
         }
-
         if (floaterScript != null)
         {
             floaterScript.enabled = true;
             Debug.Log("Script Floater activado.");
         }
-
         Debug.Log("Robot recolocado: movimiento detenido, orientación restablecida y físicas reactivadas.");
     }
 

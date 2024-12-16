@@ -13,7 +13,6 @@ public class CameraSwitcher : MonoBehaviour
         mainCamera.gameObject.SetActive(true);
         mainCamera1.gameObject.SetActive(false);
 
-        // Buscar y desactivar el script KeyboardRobot al inicio
         keyboardRobot = FindObjectOfType<KeyboardRobot>();
         if (keyboardRobot != null)
         {
@@ -27,13 +26,11 @@ public class CameraSwitcher : MonoBehaviour
 
     public void SwitchCamera()
     {
-        // Cambiar entre las cámaras
         if (mainCamera.gameObject.activeSelf)
         {
             mainCamera.gameObject.SetActive(false);
             mainCamera1.gameObject.SetActive(true);
 
-            // Activar el script KeyboardRobot
             if (keyboardRobot != null)
             {
                 keyboardRobot.enabled = true;
@@ -44,7 +41,6 @@ public class CameraSwitcher : MonoBehaviour
             mainCamera.gameObject.SetActive(true);
             mainCamera1.gameObject.SetActive(false);
 
-            // Desactivar el script KeyboardRobot
             if (keyboardRobot != null)
             {
                 keyboardRobot.enabled = false;

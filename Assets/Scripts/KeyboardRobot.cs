@@ -29,7 +29,6 @@ public class KeyboardRobot : MonoBehaviour
         {
             Debug.LogWarning("No se encontró el script KeyboardMovement en la escena.");
         }
-
         cameraSwitcherScript = FindObjectOfType<CameraSwitcher>();
         if (cameraSwitcherScript != null)
         {
@@ -40,7 +39,6 @@ public class KeyboardRobot : MonoBehaviour
         {
             Debug.LogWarning("No se encontró el script CameraSwitcher en la escena.");
         }
-
         if (canvasToActivate != null)
         {
             canvasToActivate.gameObject.SetActive(true);
@@ -50,7 +48,6 @@ public class KeyboardRobot : MonoBehaviour
         {
             Debug.LogWarning("No se asignó un Canvas para activar en el inspector.");
         }
-
         if (canvasToDestroy != null)
         {
             Destroy(canvasToDestroy.gameObject);
@@ -60,7 +57,6 @@ public class KeyboardRobot : MonoBehaviour
         {
             Debug.LogWarning("No se asignó un Canvas para eliminar en el inspector.");
         }
-
         rb = GetComponent<Rigidbody>();
         if (rb == null)
         {
